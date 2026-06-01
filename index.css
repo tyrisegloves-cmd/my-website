@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Light Mode Palette - Ice White Theme */
+  --bg-primary: #F2F5F8;
+  --bg-secondary: #FFFFFF;
+  --shadow-soft: #E1E6EB;
+  --text-primary: #1C2541;
+  --text-secondary: #3D4A5C;
+  --border-color: #D1D9E6;
+  --accent-primary: #0066FF;
+  --accent-hover: #0052CC;
+
+  /* Dark Mode Palette - Deep Space Theme */
+  --dark-bg-primary: #0B0C10;
+  --dark-bg-secondary: #1F2833;
+  --dark-text-primary: #C5C6C7;
+  --dark-text-secondary: #A0A5B0;
+  --dark-border: #2D3548;
+  --dark-accent-cyan: #66FCF1;
+  --dark-accent-lime: #39FF14;
+  --dark-accent-hover: #45E8E0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark body {
+  background: var(--dark-bg-primary);
+  color: var(--dark-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--dark-text-primary);
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+.dark ::-webkit-scrollbar-track {
+  background: var(--dark-bg-primary);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-border);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-text-primary);
+}
+
+/* Scanline animation for tech button */
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
